@@ -1,10 +1,14 @@
 const express = require('express');
+const cheerio = require("cheerio");
+const cloudscraper = require('cloudscraper');
 
 const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+//Routers
+const somosKudasaiRouter = require("./routers/somosKudasaiRouter");
 
 app.use(function (_req, res, next) {
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
@@ -14,10 +18,23 @@ app.use(function (_req, res, next) {
 });
 
 
+app.use("/somosKudasai", somosKudasaiRouter);
+
+
+
 app.get('/', function (_req, res) {
     res.send('Hello :)');
 });
 
+
+// Validate if is possible to scrape the html from the url
+app.post('/testWebsite', function (req, res) {
+    cloudscraper.get(req.body.url).then((body) => {
+        res.send({ htmlView: body });
+    }, (err) => {
+        res.send(err);
+    })
+});
 
 var server = app.listen(3500, function () {
     var host = server.address().address
