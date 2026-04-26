@@ -1,0 +1,17 @@
+{
+  "name": "catnewsbackend",
+  "version": "1.0.0",
+  "description": "Server for \"Cat News\" app",
+  "license": "ISC",
+  "author": "Wilfred Alvarado",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "cheerio": "^1.2.0",
+    "cloudscraper": "^4.6.0",
+    "express": "^5.2.1"
+  }
+}
