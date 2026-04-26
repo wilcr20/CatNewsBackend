@@ -9,6 +9,8 @@ app.use(express.urlencoded({ extended: true }));
 
 //Routers
 const somosKudasaiRouter = require("./routers/somosKudasaiRouter");
+const crHoyRouter = require("./routers/crHoyRouter");
+
 
 app.use(function (_req, res, next) {
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
@@ -19,7 +21,7 @@ app.use(function (_req, res, next) {
 
 
 app.use("/somosKudasai", somosKudasaiRouter);
-
+app.use("/crhoy", crHoyRouter);
 
 
 app.get('/', function (_req, res) {
