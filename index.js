@@ -50,3 +50,7 @@ app.use("/japanToday", japanTodayRouter);
 
 const noticiasNipponJpRouter = require("./routers/noticiasNipponJpRouter.js");;
 app.use("/noticiasNipponJp", noticiasNipponJpRouter);
+
+
+const infoBaeRouter = require("./routers/infoBaeRouter.js");;
+app.use("/infoBae", infoBaeRouter);
