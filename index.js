@@ -46,3 +46,7 @@ app.use("/crhoy", crHoyRouter);
 
 const japanTodayRouter = require("./routers/japanTodayRouter.js");;
 app.use("/japanToday", japanTodayRouter);
+
+
+const noticiasNipponJpRouter = require("./routers/noticiasNipponJpRouter.js");;
+app.use("/noticiasNipponJp", noticiasNipponJpRouter);
