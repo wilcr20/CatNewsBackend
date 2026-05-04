@@ -14,17 +14,23 @@ exports.home = (_, res) => {
         var news = [];
 
         listItems.each((_idx, el) => {
-            var newsObject = { title: "", imageUrl: "", url: "", date: "", type: ""};
-            newsObject.title = $(el).find("h3").text();
-            newsObject.url = $(el).find("h3").find("a").attr("href");
-            newsObject.imageUrl = $(el).find("img").attr("src");
-            newsObject.date = $(el).find("span.truncate").text();
-            newsObject.type = $(el).find("header p").text();
-            news.push(newsObject);
+            var newsObject = { title: "", imageUrl: "", url: "", date: "", type: "" };
+            newsObject.title = $(el).find("h2").text() || $(el).find("h3").text();
+            newsObject.url = URL + $(el).attr("href");
+
+            const images = $(el).find("img").attr("src")
+            newsObject.imageUrl = images;
+
+
+            newsObject.type = $(el).find("span.orange-label").text();
+            if (newsObject.title && newsObject.title.trim() != "") {
+                news.push(newsObject);
+
+            }
 
         });
 
-        res.send({ data: news});
+        res.send({ data: news });
     }, (err) => {
         res.send(err)
     })
