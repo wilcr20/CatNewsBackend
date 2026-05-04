@@ -30,7 +30,7 @@ exports.home = (_, res) => {
 
         });
 
-        res.send({ data: news });
+        res.send({ countNews: news.length, data: news });
     }, (err) => {
         res.send(err)
     })

@@ -14,7 +14,7 @@ exports.home = (_, res) => {
         var news = [];
 
         listItems.each((_idx, el) => {
-            var newsObject = { title: "", imageUrl: "", url: "", date: "", type: ""};
+            var newsObject = { title: "", imageUrl: "", url: "", date: "", type: "" };
             newsObject.title = $(el).find("h3").text();
             newsObject.url = $(el).find("h3").find("a").attr("href");
             newsObject.imageUrl = $(el).find("img").attr("src");
@@ -24,7 +24,7 @@ exports.home = (_, res) => {
 
         });
 
-        res.send({ data: news});
+        res.send({ countNews: news.length, data: news });
     }, (err) => {
         res.send(err)
     })

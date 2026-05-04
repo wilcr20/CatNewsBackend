@@ -51,7 +51,7 @@ const cloudscraper = require('cloudscraper');
                 newsObject.type = $(el).find("header p").text();
                 news.push(newsObject);
             });
-            res.send({ data: news});
+            res.send({countNews: news.length, data: news});
         }, (err) => {
             res.send(err)
         })
@@ -87,7 +87,7 @@ function updateIndexJs() {
 const ${websiteName}Router = require("${routerFilePath}");;
 app.use("/${websiteName}", ${websiteName}Router);`;
 
-    fs.appendFile('index.js', `${importLinesForUseRouter}\n`, (err) => {
+    fs.appendFile('index.js', `\n${importLinesForUseRouter}\n`, (err) => {
         if (err) throw err
         console.log('Data appended successfully')
     })
