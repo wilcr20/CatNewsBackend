@@ -7,10 +7,6 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-//Routers
-const somosKudasaiRouter = require("./routers/somosKudasaiRouter");
-const crHoyRouter = require("./routers/crHoyRouter");
-
 
 app.use(function (_req, res, next) {
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
@@ -18,10 +14,6 @@ app.use(function (_req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     next();
 });
-
-
-app.use("/somosKudasai", somosKudasaiRouter);
-app.use("/crhoy", crHoyRouter);
 
 
 app.get('/', function (_req, res) {
@@ -43,3 +35,11 @@ var server = app.listen(3500, function () {
     var port = server.address().port
     console.log("Server listening at http://%s:%s", host, port)
 })
+
+
+//Routers and controllers
+const somosKudasaiRouter = require("./routers/somosKudasaiRouter");
+app.use("/somosKudasai", somosKudasaiRouter);
+
+const crHoyRouter = require("./routers/crHoyRouter");
+app.use("/crhoy", crHoyRouter);
